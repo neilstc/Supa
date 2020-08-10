@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("killPlane"))
-        {
+        {   
             levelManager.Respawn();
         }
         else if (other.CompareTag("checkPoint"))

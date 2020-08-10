@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HurtPlayer : MonoBehaviour
+public class Coins : MonoBehaviour
 {
-
-    LevelManager levelManager;
-    public int damageHit = 2;
-
+    public LevelManager levelManager;
+    public int coinValue = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,18 +15,22 @@ public class HurtPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+
+
 
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player") {
-            levelManager.HurtPlayer(damageHit);
-            if (levelManager.currentHealth == 0)
-            {
-                levelManager.Respawn();
-            }
+        if (collision.CompareTag("Player"))
+        {
+            levelManager.addCoins(coinValue);
+
+            Destroy(gameObject);
 
         }
+
     }
 }
