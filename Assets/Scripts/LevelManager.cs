@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI; 
 public class LevelManager : MonoBehaviour
 {
 
@@ -58,6 +58,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(waitToResponed);
         currentHealth = maxHealth;
         respawning = false;
+        UpdateHeartMeter();
         player.transform.position = player.responPosition;
         player.gameObject.SetActive(true);
     }
@@ -68,5 +69,62 @@ public class LevelManager : MonoBehaviour
     }
     public void HurtPlayer(int damageTaken) {
         this.currentHealth -= damageTaken;
+        UpdateHeartMeter();
     }
+
+    public void UpdateHeartMeter() {
+
+        switch (currentHealth) {
+
+            case 6:
+                heart1.sprite = fullHeart;
+                heart2.sprite = fullHeart;
+                heart3.sprite = fullHeart;
+                break;
+
+            case 5:
+                heart1.sprite = halfHeart;
+                heart2.sprite = fullHeart;
+                heart3.sprite = fullHeart;
+                break;
+
+            case 4:
+                heart1.sprite = emptyHeart;
+                heart2.sprite = fullHeart;
+                heart3.sprite = fullHeart;
+                break;
+
+            case 3:
+                heart1.sprite = emptyHeart;
+                heart2.sprite = halfHeart;
+                heart3.sprite = fullHeart;
+                break;
+            case 2:
+                heart1.sprite = emptyHeart;
+                heart2.sprite = emptyHeart;
+                heart3.sprite = fullHeart;
+                break;
+
+            case 1:
+                heart1.sprite = emptyHeart;
+                heart2.sprite = emptyHeart;
+                heart3.sprite = halfHeart;
+                break;
+
+            case 0:
+                heart1.sprite = emptyHeart;
+                heart2.sprite = emptyHeart;
+                heart3.sprite = emptyHeart;
+                break;
+
+            default:
+                heart1.sprite = emptyHeart;
+                heart2.sprite = emptyHeart;
+                heart3.sprite = emptyHeart;
+                break;
+        }
+
+
+    }
+
 }
